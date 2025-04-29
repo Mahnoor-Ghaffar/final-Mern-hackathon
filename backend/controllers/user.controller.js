@@ -89,29 +89,6 @@ export const logout = async (_,res) => {
 //---------------- yaha per user k sath enrolled courses fetch ho rhy hain
 
 
-// export const getUserProfile = async (req,res) => {
-//     try {
-//         const userId = req.id;
-//         const user = await User.findById(userId).select("-password").populate("enrolledCourses");
-//         if(!user){
-//             return res.status(404).json({
-//                 message:"Profile not found",
-//                 success:false
-//             })
-//         }
-//         return res.status(200).json({
-//             success:true,
-//             user
-//         })
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).json({
-//             success:false,
-//             message:"Failed to load user"
-//         })
-//     }
-// }
-
 
 // --------------------just fetching user data
 export const getUserProfile = async (req, res) => {

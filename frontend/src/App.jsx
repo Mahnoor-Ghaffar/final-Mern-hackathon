@@ -6,6 +6,7 @@ import MainLayout from "./layout/MainLayout";
 // import Courses from "./pages/student/Courses";
 import MyLearning from "./pages/student/MyLearning";
 import Profile from "./pages/student/Profile";
+import Dashboard from "./pages/Dashboard";
 // import Task from "./components/Task";
 // import Sidebar from "./pages/admin/Sidebar";
 // import Dashboard from "./pages/admin/Dashboard";
@@ -17,11 +18,11 @@ import Profile from "./pages/student/Profile";
 // import CourseDetail from "./pages/student/CourseDetail";
 // import CourseProgress from "./pages/student/CourseProgress";
 // import SearchPage from "./pages/student/SearchPage";
-// import {
-//   AdminRoute,
-//   AuthenticatedUser,
-//   ProtectedRoute,
-// } from "./components/ProtectedRoutes";
+import {
+  AdminRoute,
+  AuthenticatedUser,
+  ProtectedRoute,
+} from "./components/ProtectedRoutes";
 // import PurchaseCourseProtectedRoute from "./components/PurchaseCourseProtectedRoute";
 // import { ThemeProvider } from "./components/ThemeProvider";
 
@@ -64,68 +65,15 @@ const appRouter = createBrowserRouter([
           // </ProtectedRoute>
         ),
        },
-      // {
-      //   path: "course/search",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <SearchPage />
-      //     </ProtectedRoute>
-      //   ),
-      // },
-      // {
-      //   path: "course-detail/:courseId",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <CourseDetail />
-      //     </ProtectedRoute>
-      //   ),
-      // },
-      // {
-      //   path: "course-progress/:courseId",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <PurchaseCourseProtectedRoute>
-      //       <CourseProgress />
-      //       </PurchaseCourseProtectedRoute>
-      //     </ProtectedRoute>
-      //   ),
-      // },
-
-      // // admin routes start from here
-      // {
-      //   path: "admin",
-      //   element: (
-      //     <AdminRoute>
-      //       <Sidebar />
-      //     </AdminRoute>
-      //   ),
-      //   children: [
-      //     {
-      //       path: "dashboard",
-      //       element: <Dashboard />,
-      //     },
-      //     {
-      //       path: "course",
-      //       element: <CourseTable />,
-      //     },
-      //     {
-      //       path: "course/create",
-      //       element: <AddCourse />,
-      //     },
-      //     {
-      //       path: "course/:courseId",
-      //       element: <EditCourse />,
-      //     },
-      //     {
-      //       path: "course/:courseId/lecture",
-      //       element: <CreateLecture />,
-      //     },
-      //     {
-      //       path: "course/:courseId/lecture/:lectureId",
-      //       element: <EditLecture />,
-      //     },
-      //   ],
-      // },
+       {
+        path: "profile",
+        element: (
+          <AuthenticatedUser>
+            <Dashboard/>
+          </AuthenticatedUser>
+        ),
+       },
+      
     ],
   },
 ]);

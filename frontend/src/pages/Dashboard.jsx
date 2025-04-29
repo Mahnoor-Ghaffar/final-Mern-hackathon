@@ -37,11 +37,33 @@ const Dashboard = () => {
   )
 
   // Fetch tasks
+  // useEffect(() => {
+  //   const fetchTasks = async () => {
+  //     try {
+  //       const res = await axios.get("/api/tasks")
+  //       setTasks(res.data)
+  //       setLoading(false)
+  //     } catch (err) {
+  //       console.error("Error fetching tasks:", err)
+  //       setError("Failed to load tasks. Please check your connection and try again.")
+  //       setLoading(false)
+  //     }
+  //   }
+
+  //   fetchTasks()
+  // }, [])
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const res = await axios.get("/api/tasks")
-        setTasks(res.data)
+        console.log(res.data) // Log the response to check the structure
+        if (Array.isArray(res.data)) {
+          setTasks(res.data)  // Set tasks only if it's an array
+        } else {
+          console.error("Expected an array but got:", res.data)
+          setError("Failed to load tasks. Unexpected data format.")
+        }
         setLoading(false)
       } catch (err) {
         console.error("Error fetching tasks:", err)
@@ -49,7 +71,7 @@ const Dashboard = () => {
         setLoading(false)
       }
     }
-
+  
     fetchTasks()
   }, [])
 
@@ -89,7 +111,7 @@ const Dashboard = () => {
 
   const addTask = async (taskData) => {
     try {
-      const res = await axios.post("/api/tasks", taskData)
+      const res = await axios.post("/api/tasks", taskData, { withCredentials: true })
       setTasks([...tasks, res.data])
       setShowTaskForm(false)
     } catch (err) {
@@ -390,4 +412,7 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+
+
 

@@ -82,12 +82,12 @@ const Navbar = () => {
                     Log out
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
-                {user?.role === "instructor" && (
+                
                   <>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem><Link to="/admin/dashboard">Dashboard</Link></DropdownMenuItem>
+                    <DropdownMenuItem><Link to="/Dashboard">Dashboard</Link></DropdownMenuItem>
                   </>
-                )}
+                
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (

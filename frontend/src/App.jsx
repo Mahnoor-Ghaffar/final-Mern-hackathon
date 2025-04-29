@@ -7,22 +7,13 @@ import MainLayout from "./layout/MainLayout";
 import MyLearning from "./pages/student/MyLearning";
 import Profile from "./pages/student/Profile";
 import Dashboard from "./pages/Dashboard";
-// import Task from "./components/Task";
-// import Sidebar from "./pages/admin/Sidebar";
-// import Dashboard from "./pages/admin/Dashboard";
-// import CourseTable from "./pages/admin/course/CourseTable";
-// import AddCourse from "./pages/admin/course/AddCourse";
-// import EditCourse from "./pages/admin/course/EditCourse";
-// import CreateLecture from "./pages/admin/lecture/CreateLecture";
-// import EditLecture from "./pages/admin/lecture/EditLecture";
-// import CourseDetail from "./pages/student/CourseDetail";
-// import CourseProgress from "./pages/student/CourseProgress";
-// import SearchPage from "./pages/student/SearchPage";
-import {
-  AdminRoute,
-  AuthenticatedUser,
-  ProtectedRoute,
-} from "./components/ProtectedRoutes";
+import { AuthProvider } from "./context/AuthContext"
+import PrivateRoute from "./components/PrivateRoute"
+// import {
+//   AdminRoute,
+//   AuthenticatedUser,
+//   ProtectedRoute,
+// } from "./components/ProtectedRoutes";
 // import PurchaseCourseProtectedRoute from "./components/PurchaseCourseProtectedRoute";
 // import { ThemeProvider } from "./components/ThemeProvider";
 
@@ -66,11 +57,13 @@ const appRouter = createBrowserRouter([
         ),
        },
        {
-        path: "profile",
+        path: "Dashboard",
         element: (
-          <AuthenticatedUser>
-            <Dashboard/>
-          </AuthenticatedUser>
+          <AuthProvider>
+            {/* <PrivateRoute> */}
+              <Dashboard/>
+            {/* </PrivateRoute> */}
+          </AuthProvider>
         ),
        },
       
